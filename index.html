@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MacHost — Own Your Mac. 海外独享 Mac mini 托管</title>
+<meta name="description" content="独享实体 Mac mini，海外机房 7×24 在线。设备归你，运维归我们。首批早鸟 $79/月起。">
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MacHost — Own Your Mac.">
+<meta property="og:description" content="独享实体 Mac mini，海外机房 7×24 在线。设备归你，运维归我们。">
+<meta property="og:image" content="assets/macmini-front.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0a'/%3E%3Crect x='12' y='22' width='40' height='20' rx='5' fill='%23f5f5f3'/%3E%3Ccircle cx='44' cy='32' r='2.5' fill='%23ff7a1a'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">MacHost</a>
+    <nav class="nav-links" aria-label="页面导航">
+      <a href="#how">原理</a>
+      <a href="#pricing">定价</a>
+      <a href="#process">流程</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#pricing" class="btn btn-light btn-sm">抢早鸟名额</a>
+  </div>
+</header>
+
+<main>
+  <section id="top" class="hero">
+    <div class="hero-raster" aria-hidden="true">
+      <div class="hero-grid" id="hero-grid"></div>
+    </div>
+    <div class="hero-pin" aria-hidden="true">
+      <div class="hero-pin-line"></div>
+      <div class="hero-card">
+        <div class="hero-card-row"><span class="hero-card-name"><span class="led"></span>你的 Mac</span><span class="mono hero-card-status">Online</span></div>
+        <div class="mono hero-card-meta">Mac mini · 独享 · 海外机房 · 7×24</div>
+        <div class="hero-card-rule"></div>
+        <div class="hero-card-row hero-card-job"><span>Coding Agent</span><span class="muted">运行中</span></div>
+      </div>
+    </div>
+    <div class="hero-copy">
+      <div class="wrap hero-copy-in">
+        <h1>Own Your Mac.</h1>
+        <div class="hero-sub">
+          <p>独享实体 Mac mini，海外机房 7×24 在线。<br>设备归你，运维归我们。</p>
+          <a href="#pricing" class="btn btn-light btn-lg">抢早鸟名额 · $<span data-v="yearly">79</span>/月起</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="slots" class="wrap slots">
+    <div class="slots-card">
+      <div class="mono slots-head">
+        <span class="slots-title"><span class="led led-sm"></span>首批早鸟 · <span data-v="total">30</span> 台</span>
+        <span class="slots-legend">
+          <span><i class="key key-on"><i></i></i>运行中 <span data-v="claimed">12</span></span>
+          <span><i class="key key-free"></i>可预订 <span data-v="left">18</span></span>
+        </span>
+      </div>
+      <div class="slots-body">
+        <div class="slots-left"><span class="muted" data-v="leftPrefix">仅剩</span><span class="slots-num" data-v="left">18</span><span class="muted">台</span></div>
+        <div class="slots-grid" id="slots-grid" role="img" aria-label="早鸟名额占用情况"></div>
+      </div>
+      <div class="slots-foot">
+        <span class="muted">售完恢复标准价 $<span data-v="standard">159</span>/月</span>
+        <a href="#pricing" class="link-under">锁定早鸟价 →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="wrap how">
+    <div class="diagram-scroll">
+      <div class="diagram">
+        <div class="node">
+          <div class="node-icon"><div></div></div>
+          <div class="node-title">你的电脑或手机</div>
+          <div class="node-sub">远程登录，下达指令</div>
+        </div>
+        <div class="wire"><div class="mono wire-label">远程访问</div><div class="wire-line wire-dotted"></div></div>
+        <div class="node">
+          <img src="assets/macmini-front.png" alt="Mac mini" width="652" height="264" class="node-mac">
+          <div class="node-title">你的独享 Mac</div>
+          <div class="node-sub">海外机房 · 7×24 在线</div>
+        </div>
+        <div class="wire"><div class="mono wire-label wire-label-on">海外本地网络</div><div class="wire-line wire-dashed"></div></div>
+        <div class="chips">
+          <div>AI Coding Agent</div>
+          <div>代码托管与 CI</div>
+          <div>包管理与依赖</div>
+          <div>你的开发工具</div>
+        </div>
+      </div>
+    </div>
+    <div class="claims">
+      <div><h2 class="h-claim">设备归你。</h2><p>Mac mini 是你的资产，不是带不走的租赁品。</p></div>
+      <div><h2 class="h-claim">一直在线。</h2><p>我们负责托管、联网与运维。你随时远程访问。</p></div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <h2 class="h-section">选你的方案。</h2>
+
+    <div class="opt-block">
+      <div class="opts" id="mode-opts" role="radiogroup" aria-label="托管模式">
+        <button type="button" class="opt" role="radio" data-mode="byo"><span>Bring Your Mac</span><small>自带设备</small></button>
+        <button type="button" class="opt" role="radio" data-mode="buy"><span>Buy &amp; Host</span><small>代购 + 托管</small></button>
+        <button type="button" class="opt" role="radio" data-mode="rent" disabled><span>Rent a Mac</span><small>Coming Soon</small></button>
+      </div>
+      <p class="mode-desc" id="mode-desc" aria-live="polite"></p>
+    </div>
+
+    <div class="opts" id="billing-opts" role="radiogroup" aria-label="付款方式">
+      <button type="button" class="opt" role="radio" data-billing="year"><span>年付</span><small>$<span data-v="yearly">79</span>/月</small></button>
+      <button type="button" class="opt" role="radio" data-billing="month"><span>月付</span><small>$<span data-v="monthly">99</span>/月</small></button>
+    </div>
+
+    <div class="price-block">
+      <div class="price-row">
+        <span class="price-big" data-v="price">$79</span>
+        <span class="price-side"><s>$<span data-v="standard">159</span></s><span>/月</span></span>
+      </div>
+      <p class="price-note" id="price-note" aria-live="polite"></p>
+    </div>
+
+    <div class="buy-block">
+      <a href="#contact" class="btn btn-light btn-buy" id="buy-cta">抢早鸟名额</a>
+      <p class="fine">免 $<span data-v="setupFee">49</span> 部署费 · 支持 USD / 人民币</p>
+    </div>
+  </section>
+
+  <section id="process" class="wrap process">
+    <h2 class="h-section">五步上线。</h2>
+    <ol class="steps">
+      <li><span class="mono">01</span><b>咨询</b></li>
+      <li><span class="mono">02</span><b>支付</b></li>
+      <li><span class="mono">03</span><b>采购 / 收货</b></li>
+      <li><span class="mono">04</span><b>验机部署</b></li>
+      <li class="step-on"><span class="mono">05</span><b>远程交付</b></li>
+    </ol>
+  </section>
+
+  <section id="faq" class="wrap faq">
+    <h2 class="h-section">FAQ</h2>
+    <div class="faq-list" id="faq-list">
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false"><span>设备归谁所有？</span><span class="faq-sign" aria-hidden="true">+</span></button>
+        <div class="faq-a" hidden>归你。两种模式下 Mac mini 都是你的资产，我们只提供托管与运维服务。</div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false"><span>怎么付款？</span><span class="faq-sign" aria-hidden="true">+</span></button>
+        <div class="faq-a" hidden>支持 USD 和人民币。美元为基准价，人民币按结算汇率折算。</div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false"><span>可以取消吗？</span><span class="faq-sign" aria-hidden="true">+</span></button>
+        <div class="faq-a" hidden>月付可取消下一周期续费。年付预收全年费用，退款条款会在下单前向你披露。</div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false"><span>早鸟价能享受多久？</span><span class="faq-sign" aria-hidden="true">+</span></button>
+        <div class="faq-a" hidden>首批 <span data-v="total">30</span> 台，首年享受早鸟价，并免除 $<span data-v="setupFee">49</span> 首次部署费。名额以实际可交付容量为准。</div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false"><span>第三方软件和账号怎么处理？</span><span class="faq-sign" aria-hidden="true">+</span></button>
+        <div class="faq-a" hidden>你自行管理第三方软件账户及订阅，使用须符合相应服务商的地区和使用条款；托管服务不保证第三方平台的可用性。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="wrap cta">
+    <h2>你的 Mac，<br>一直在线。</h2>
+    <div class="cta-btns">
+      <button type="button" class="btn btn-light btn-lg" data-open-contact>抢早鸟名额</button>
+      <button type="button" class="btn btn-ghost btn-lg" data-open-contact>微信咨询</button>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div class="footer-note">MacHost · 海外实体 Mac mini 托管。客户自行管理第三方软件账户及订阅，使用须符合相应服务商的地区和使用条款。</div>
+    <div>© 2026 MacHost</div>
+  </div>
+</footer>
+
+<div class="buybar" id="buybar" aria-hidden="true">
+  <div class="wrap buybar-in">
+    <div class="buybar-info">
+      <b>Mac mini 托管</b>
+      <span class="mono" data-v="configLabel">Buy &amp; Host · 年付</span>
+    </div>
+    <div class="buybar-act">
+      <div class="buybar-price"><b data-v="price">$79</b><span>/月</span></div>
+      <a href="#contact" class="btn btn-dark" tabindex="-1">抢早鸟名额</a>
+    </div>
+  </div>
+</div>
+
+<dialog class="modal" id="contact-modal" aria-labelledby="modal-title">
+  <button type="button" class="modal-x" data-close-contact aria-label="关闭">×</button>
+  <h3 id="modal-title">加微信，锁定早鸟名额</h3>
+  <p class="modal-lead">把下面这行发给我们，直接进入报价和排期。</p>
+  <div class="modal-pick mono"><span data-v="configLabel">Buy &amp; Host · 年付</span> · <span data-v="price">$79</span>/月</div>
+  <img class="modal-qr" id="modal-qr" alt="微信二维码" hidden>
+  <div class="modal-row" id="modal-wechat" hidden>
+    <div><small>微信号</small><b id="modal-wechat-id"></b></div>
+    <button type="button" class="btn btn-light btn-sm" id="modal-copy">复制</button>
+  </div>
+  <a class="modal-row modal-mail" id="modal-email" hidden><div><small>邮箱</small><b id="modal-email-addr"></b></div><span aria-hidden="true">→</span></a>
+  <p class="modal-empty" id="modal-empty" hidden>联系方式即将开放，敬请稍候。</p>
+</dialog>
+
+<script src="site-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
