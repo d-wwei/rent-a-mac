@@ -10,12 +10,22 @@
   var claimed = Math.max(0, Math.min(total, Math.round(Number(S.claimed) || 0)));
   var left = total - claimed;
 
-  var state = { mode: 'buy', billing: D.defaultBilling === 'month' ? 'month' : 'year' };
+  var CUR = Object.assign({ default: 'USD', cnyRate: 7.2 }, D.currency);
+  var rate = Number(CUR.cnyRate) > 0 ? Number(CUR.cnyRate) : 7.2;
 
-  var MODES = {
-    byo: { label: 'Bring Your Mac', desc: '你自行购买并寄到机房，我们负责接收、部署、联网与运维。' },
-    buy: { label: 'Buy & Host', desc: '我们代购全新或二手 Mac mini，验机、配置、上架。代购服务费 $' + P.buyServiceFee + '/台，设备按实价。' }
+  var savedCur = null;
+  try { savedCur = localStorage.getItem('mh-currency'); } catch (e) {}
+  var state = {
+    mode: 'buy',
+    billing: D.defaultBilling === 'month' ? 'month' : 'year',
+    currency: savedCur === 'USD' || savedCur === 'CNY' ? savedCur : (CUR.default === 'CNY' ? 'CNY' : 'USD')
   };
+
+  var MODES = { byo: 'Bring Your Mac', buy: 'Buy & Host' };
+
+  // Amount in the selected currency, as a whole number.
+  function amount(usd) { return state.currency === 'CNY' ? Math.round(usd * rate) : usd; }
+  function money(n) { return (state.currency === 'CNY' ? '¥' : '$') + n.toLocaleString('en-US'); }
 
   function $(id) { return document.getElementById(id); }
   function each(sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
@@ -26,10 +36,6 @@
   setV('claimed', claimed);
   setV('left', left);
   setV('leftPrefix', left > 0 ? '仅剩' : '已售罄');
-  setV('yearly', P.yearly);
-  setV('monthly', P.monthly);
-  setV('standard', P.standard);
-  setV('setupFee', P.setupFee);
 
   // ── Hero: isometric field of Mac minis, one lit ──
   var grid = $('hero-grid');
@@ -59,23 +65,54 @@
   // ── Pricing configurator ──
   function render() {
     var year = state.billing === 'year';
-    var price = '$' + (year ? P.yearly : P.monthly);
-    each('#mode-opts .opt', function (b) { b.setAttribute('aria-checked', String(b.dataset.mode === state.mode)); });
+    var cny = state.currency === 'CNY';
+    var perMonth = amount(year ? P.yearly : P.monthly);
+    each('#mode-opts .plan', function (b) { b.setAttribute('aria-checked', String(b.dataset.mode === state.mode)); });
     each('#billing-opts .opt', function (b) { b.setAttribute('aria-checked', String(b.dataset.billing === state.billing)); });
-    $('mode-desc').textContent = MODES[state.mode].desc;
+    each('#cur button', function (b) { b.setAttribute('aria-pressed', String(b.dataset.cur === state.currency)); });
+    each('[data-m]', function (el) { el.textContent = money(amount(P[el.dataset.m])); });
     $('price-note').textContent = year
-      ? '年付总额 $' + (P.yearly * 12).toLocaleString('en-US') + ' · 早鸟价首年有效'
+      ? '年付总额 ' + money(perMonth * 12) + ' · 早鸟价首年有效'
       : '按月付费 · 可取消下一周期续费';
-    setV('price', price);
-    setV('configLabel', MODES[state.mode].label + ' · ' + (year ? '年付' : '月付'));
+    var fx = $('fx-note');
+    fx.hidden = !cny;
+    fx.textContent = cny ? '人民币为参考价，按 1 USD = ' + rate + ' CNY 折算，以结算时汇率为准。' : '';
+    setV('price', money(perMonth));
+    setV('configLabel', MODES[state.mode] + ' · ' + (year ? '年付' : '月付'));
   }
-  each('#mode-opts .opt', function (b) {
+  each('#mode-opts .plan', function (b) {
     b.addEventListener('click', function () { if (!b.disabled) { state.mode = b.dataset.mode; render(); } });
   });
   each('#billing-opts .opt', function (b) {
     b.addEventListener('click', function () { state.billing = b.dataset.billing; render(); });
   });
+  each('#cur button', function (b) {
+    b.addEventListener('click', function () {
+      state.currency = b.dataset.cur;
+      try { localStorage.setItem('mh-currency', state.currency); } catch (e) {}
+      render();
+    });
+  });
   render();
+
+  // ── Nav CTA: stays out of the way until the hero's own CTA has scrolled off ──
+  var navCta = $('nav-cta'), heroCta = $('hero-cta');
+  if (navCta && heroCta) {
+    var navShown = false, navQueued = false;
+    var syncNav = function () {
+      navQueued = false;
+      var show = heroCta.getBoundingClientRect().bottom < 72;
+      if (show === navShown) return;
+      navShown = show;
+      navCta.classList.toggle('show', show);
+      navCta.setAttribute('aria-hidden', String(!show));
+      navCta.tabIndex = show ? 0 : -1;
+    };
+    var queueNav = function () { if (!navQueued) { navQueued = true; requestAnimationFrame(syncNav); } };
+    window.addEventListener('scroll', queueNav, { passive: true });
+    window.addEventListener('resize', queueNav);
+    syncNav();
+  }
 
   // ── FAQ accordion (one open at a time) ──
   each('.faq-q', function (q) {

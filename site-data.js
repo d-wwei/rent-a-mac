@@ -18,6 +18,12 @@ window.SITE_DATA = {
     buyServiceFee: 79 // 代购服务费（每台）
   },
 
+  // ── 货币 ─────────────────────────────────────────────
+  currency: {
+    default: "USD", // 访客第一次打开时显示的货币："USD" 或 "CNY"
+    cnyRate: 7.2,   // 人民币折算汇率（1 美元 = 多少人民币）← 按你的结算汇率改
+  },
+
   // 定价区默认选中的付款方式："year" 或 "month"
   defaultBilling: "year",
 

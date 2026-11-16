@@ -25,7 +25,13 @@
       <a href="#process">流程</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a href="#pricing" class="btn btn-light btn-sm">抢早鸟名额</a>
+    <div class="nav-right">
+      <div class="cur" id="cur" role="group" aria-label="切换货币">
+        <button type="button" data-cur="USD" aria-pressed="true">USD</button>
+        <button type="button" data-cur="CNY" aria-pressed="false">CNY</button>
+      </div>
+      <a href="#pricing" class="btn btn-light btn-sm nav-cta" id="nav-cta" tabindex="-1" aria-hidden="true">抢早鸟名额</a>
+    </div>
   </div>
 </header>
 
@@ -48,7 +54,7 @@
         <h1>Own Your Mac.</h1>
         <div class="hero-sub">
           <p>独享实体 Mac mini，海外机房 7×24 在线。<br>设备归你，运维归我们。</p>
-          <a href="#pricing" class="btn btn-light btn-lg">抢早鸟名额 · $<span data-v="yearly">79</span>/月起</a>
+          <a href="#pricing" class="btn btn-light btn-lg" id="hero-cta">抢早鸟名额 · <span data-m="yearly">$79</span>/月起</a>
         </div>
       </div>
     </div>
@@ -68,7 +74,7 @@
         <div class="slots-grid" id="slots-grid" role="img" aria-label="早鸟名额占用情况"></div>
       </div>
       <div class="slots-foot">
-        <span class="muted">售完恢复标准价 $<span data-v="standard">159</span>/月</span>
+        <span class="muted">售完恢复标准价 <span data-m="standard">$159</span>/月</span>
         <a href="#pricing" class="link-under">锁定早鸟价 →</a>
       </div>
     </div>
@@ -106,31 +112,44 @@
   <section id="pricing" class="pricing">
     <h2 class="h-section">选你的方案。</h2>
 
-    <div class="opt-block">
-      <div class="opts" id="mode-opts" role="radiogroup" aria-label="托管模式">
-        <button type="button" class="opt" role="radio" data-mode="byo"><span>Bring Your Mac</span><small>自带设备</small></button>
-        <button type="button" class="opt" role="radio" data-mode="buy"><span>Buy &amp; Host</span><small>代购 + 托管</small></button>
-        <button type="button" class="opt" role="radio" data-mode="rent" disabled><span>Rent a Mac</span><small>Coming Soon</small></button>
-      </div>
-      <p class="mode-desc" id="mode-desc" aria-live="polite"></p>
+    <div class="plans" id="mode-opts" role="radiogroup" aria-label="托管模式">
+      <button type="button" class="plan" role="radio" data-mode="byo">
+        <span class="plan-head"><span class="plan-name">Bring Your Mac</span><span class="plan-dot" aria-hidden="true"></span></span>
+        <span class="plan-cn">自带设备</span>
+        <span class="plan-desc">你自行购买并寄到机房，我们负责接收、部署、联网与运维。</span>
+        <span class="plan-fee">设备自购 · 无代购费</span>
+      </button>
+      <button type="button" class="plan" role="radio" data-mode="buy">
+        <span class="plan-head"><span class="plan-name">Buy &amp; Host</span><span class="plan-dot" aria-hidden="true"></span></span>
+        <span class="plan-cn">代购 + 托管</span>
+        <span class="plan-desc">我们代购全新或二手 Mac mini，验机、配置、上架。</span>
+        <span class="plan-fee">代购服务费 <span data-m="buyServiceFee">$79</span>/台 · 设备按实价</span>
+      </button>
+      <button type="button" class="plan" role="radio" data-mode="rent" disabled>
+        <span class="plan-head"><span class="plan-name">Rent a Mac</span><span class="plan-tag">Coming Soon</span></span>
+        <span class="plan-cn">按月租用</span>
+        <span class="plan-desc">不买设备，按月租一台独享 Mac mini。</span>
+        <span class="plan-fee">即将开放</span>
+      </button>
     </div>
 
     <div class="opts" id="billing-opts" role="radiogroup" aria-label="付款方式">
-      <button type="button" class="opt" role="radio" data-billing="year"><span>年付</span><small>$<span data-v="yearly">79</span>/月</small></button>
-      <button type="button" class="opt" role="radio" data-billing="month"><span>月付</span><small>$<span data-v="monthly">99</span>/月</small></button>
+      <button type="button" class="opt" role="radio" data-billing="year"><span>年付</span><small><span data-m="yearly">$79</span>/月</small></button>
+      <button type="button" class="opt" role="radio" data-billing="month"><span>月付</span><small><span data-m="monthly">$99</span>/月</small></button>
     </div>
 
     <div class="price-block">
       <div class="price-row">
         <span class="price-big" data-v="price">$79</span>
-        <span class="price-side"><s>$<span data-v="standard">159</span></s><span>/月</span></span>
+        <span class="price-side"><s data-m="standard">$159</s><span>/月</span></span>
       </div>
       <p class="price-note" id="price-note" aria-live="polite"></p>
     </div>
 
     <div class="buy-block">
       <a href="#contact" class="btn btn-light btn-buy" id="buy-cta">抢早鸟名额</a>
-      <p class="fine">免 $<span data-v="setupFee">49</span> 部署费 · 支持 USD / 人民币</p>
+      <p class="fine">免 <span data-m="setupFee">$49</span> 部署费 · 支持 USD / 人民币</p>
+      <p class="fine fx-note" id="fx-note" hidden></p>
     </div>
   </section>
 
@@ -162,7 +181,7 @@
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false"><span>早鸟价能享受多久？</span><span class="faq-sign" aria-hidden="true">+</span></button>
-        <div class="faq-a" hidden>首批 <span data-v="total">30</span> 台，首年享受早鸟价，并免除 $<span data-v="setupFee">49</span> 首次部署费。名额以实际可交付容量为准。</div>
+        <div class="faq-a" hidden>首批 <span data-v="total">30</span> 台，首年享受早鸟价，并免除 <span data-m="setupFee">$49</span> 首次部署费。名额以实际可交付容量为准。</div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" aria-expanded="false"><span>第三方软件和账号怎么处理？</span><span class="faq-sign" aria-hidden="true">+</span></button>
