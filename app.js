@@ -154,16 +154,13 @@
 
   // ── Contact modal ──
   var modal = $('contact-modal');
-  var hasContact = false;
-  if (C.wechatQr) { $('modal-qr').src = C.wechatQr; $('modal-qr').hidden = false; hasContact = true; }
-  if (C.wechatId) { $('modal-wechat-id').textContent = C.wechatId; $('modal-wechat').hidden = false; hasContact = true; }
+  if (C.wechatQr) { $('modal-qr').src = C.wechatQr; $('modal-qr').hidden = false; }
+  if (C.wechatId) { $('modal-wechat-id').textContent = C.wechatId; $('modal-wechat').hidden = false; }
   if (C.email) {
     $('modal-email-addr').textContent = C.email;
     $('modal-email').href = 'mailto:' + C.email;
     $('modal-email').hidden = false;
-    hasContact = true;
   }
-  $('modal-empty').hidden = hasContact;
 
   function openContact(ev) {
     if (ev) ev.preventDefault();

@@ -30,7 +30,7 @@
         <button type="button" data-cur="USD" aria-pressed="true">USD</button>
         <button type="button" data-cur="CNY" aria-pressed="false">CNY</button>
       </div>
-      <a href="#pricing" class="btn btn-light btn-sm nav-cta" id="nav-cta" tabindex="-1" aria-hidden="true">抢早鸟名额</a>
+      <a href="#contact" class="btn btn-light btn-sm nav-cta" id="nav-cta" tabindex="-1" aria-hidden="true" data-open-contact>抢早鸟名额</a>
     </div>
   </div>
 </header>
@@ -54,7 +54,7 @@
         <h1>Own Your Mac.</h1>
         <div class="hero-sub">
           <p>独享实体 Mac mini，海外机房 7×24 在线。<br>设备归你，运维归我们。</p>
-          <a href="#pricing" class="btn btn-light btn-lg" id="hero-cta">抢早鸟名额 · <span data-m="yearly">$79</span>/月起</a>
+          <a href="#contact" class="btn btn-light btn-lg" id="hero-cta" data-open-contact>抢早鸟名额 · <span data-m="yearly">$79</span>/月起</a>
         </div>
       </div>
     </div>
@@ -147,7 +147,7 @@
     </div>
 
     <div class="buy-block">
-      <a href="#contact" class="btn btn-light btn-buy" id="buy-cta">抢早鸟名额</a>
+      <a href="#contact" class="btn btn-light btn-buy" id="buy-cta" data-open-contact>抢早鸟名额</a>
       <p class="fine">免 <span data-m="setupFee">$49</span> 部署费 · 支持 USD / 人民币</p>
       <p class="fine fx-note" id="fx-note" hidden></p>
     </div>
@@ -214,23 +214,21 @@
     </div>
     <div class="buybar-act">
       <div class="buybar-price"><b data-v="price">$79</b><span>/月</span></div>
-      <a href="#contact" class="btn btn-dark" tabindex="-1">抢早鸟名额</a>
+      <a href="#contact" class="btn btn-dark" tabindex="-1" data-open-contact>抢早鸟名额</a>
     </div>
   </div>
 </div>
 
 <dialog class="modal" id="contact-modal" aria-labelledby="modal-title">
   <button type="button" class="modal-x" data-close-contact aria-label="关闭">×</button>
-  <h3 id="modal-title">加微信，锁定早鸟名额</h3>
-  <p class="modal-lead">把下面这行发给我们，直接进入报价和排期。</p>
-  <div class="modal-pick mono"><span data-v="configLabel">Buy &amp; Host · 年付</span> · <span data-v="price">$79</span>/月</div>
-  <img class="modal-qr" id="modal-qr" alt="微信二维码" hidden>
+  <img class="modal-qr" id="modal-qr" alt="微信二维码" width="740" height="742" hidden>
+  <h3 id="modal-title">扫描二维码沟通详情</h3>
+  <p class="modal-hint">手机上：长按二维码识别，或截图后在微信里扫一扫</p>
   <div class="modal-row" id="modal-wechat" hidden>
     <div><small>微信号</small><b id="modal-wechat-id"></b></div>
     <button type="button" class="btn btn-light btn-sm" id="modal-copy">复制</button>
   </div>
   <a class="modal-row modal-mail" id="modal-email" hidden><div><small>邮箱</small><b id="modal-email-addr"></b></div><span aria-hidden="true">→</span></a>
-  <p class="modal-empty" id="modal-empty" hidden>联系方式即将开放，敬请稍候。</p>
 </dialog>
 
 <script src="site-data.js"></script>

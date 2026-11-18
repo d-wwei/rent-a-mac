@@ -30,10 +30,10 @@ window.SITE_DATA = {
   // 滚动过定价区后，底部是否显示常驻购买条
   stickyBar: true,
 
-  // ── 联系方式（点“抢早鸟名额 / 微信咨询”后弹出）──────
+  // ── 联系方式（点任一“抢早鸟名额”或“微信咨询”后弹出）──
   contact: {
     wechatId: "",   // 微信号，例如 "machost_cn"
-    wechatQr: "",   // 微信二维码图片路径，例如 "assets/wechat-qr.png"（可留空）
+    wechatQr: "assets/wechat-qr.png", // 微信二维码图片（换码时替换这个文件即可）
     email: "",      // 邮箱（可留空）
   },
 };
