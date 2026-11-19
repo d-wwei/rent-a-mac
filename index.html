@@ -2,6 +2,13 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
+<script>
+/* 旧地址 d-wwei.github.io/rent-a-mac 跳转到正式域名，保留 #锚点 */
+if (/\.github\.io$/.test(location.hostname)) {
+  location.replace('https://machost.tech' + location.pathname.replace(/^\/rent-a-mac/, '') + location.search + location.hash);
+}
+</script>
+<link rel="canonical" href="https://machost.tech/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MacHost — Own Your Mac. 海外独享 Mac mini 托管</title>
 <meta name="description" content="独享实体 Mac mini，海外机房 7×24 在线。设备归你，运维归我们。首批早鸟 $79/月起。">

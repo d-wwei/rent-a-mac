@@ -2,7 +2,7 @@
 
 MacHost 官网：海外独享 Mac mini 托管。纯静态站点，没有构建步骤，部署在 Cloudflare（从 GitHub 仓库自动部署）。
 
-线上地址：https://machost.tech
+线上地址：https://machost.tech（旧地址 d-wwei.github.io/rent-a-mac 会自动跳转过来）
 
 ## 日常更新（只改一个文件）
 
