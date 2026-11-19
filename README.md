@@ -1,8 +1,8 @@
 # rent-a-mac
 
-MacHost 官网：海外独享 Mac mini 托管。纯静态站点，没有构建步骤，部署在 GitHub Pages。
+MacHost 官网：海外独享 Mac mini 托管。纯静态站点，没有构建步骤，部署在 Cloudflare（从 GitHub 仓库自动部署）。
 
-线上地址：https://d-wwei.github.io/rent-a-mac
+线上地址：https://machost.tech
 
 ## 日常更新（只改一个文件）
 
@@ -39,3 +39,7 @@ python3 -m http.server 4173
 ```
 
 然后打开 http://localhost:4173
+
+## 不公开的文件
+
+`.assetsignore` 里列出的文件不会发布到线上（README、.gitignore 等）。新增只给自己看的文件时，把文件名加进去。
